@@ -39,4 +39,11 @@ public class MesaService {
 
         return ResponseEntity.ok(lista);
     }
+
+    @Transactional
+    public ResponseEntity<Void> deletarMesa(Long id) {
+        mesaRepository.deleteById(id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

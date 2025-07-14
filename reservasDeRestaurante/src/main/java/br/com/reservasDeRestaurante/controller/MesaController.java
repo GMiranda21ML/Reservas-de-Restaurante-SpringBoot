@@ -30,4 +30,9 @@ public class MesaController {
     public ResponseEntity<List<DetalharMesaDTO>> listarMesas() {
         return mesaService.listarMesas();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarMesa(@PathVariable Long id) {
+        return mesaService.deletarMesa(id);
+    }
 }
