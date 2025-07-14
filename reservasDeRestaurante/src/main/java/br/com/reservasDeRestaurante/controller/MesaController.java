@@ -1,11 +1,13 @@
 package br.com.reservasDeRestaurante.controller;
 
+import br.com.reservasDeRestaurante.dto.AtualizarMesaDTO;
 import br.com.reservasDeRestaurante.dto.CriarMesaDTO;
 import br.com.reservasDeRestaurante.dto.DetalharMesaDTO;
 import br.com.reservasDeRestaurante.model.Mesa;
 import br.com.reservasDeRestaurante.repository.MesaRepository;
 import br.com.reservasDeRestaurante.service.MesaService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Path;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,11 @@ public class MesaController {
     @GetMapping
     public ResponseEntity<List<DetalharMesaDTO>> listarMesas() {
         return mesaService.listarMesas();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DetalharMesaDTO> atualizarMesa(@PathVariable Long id, @RequestBody AtualizarMesaDTO atualizarMesaDTO) {
+        return mesaService.atualizarMesa(id, atualizarMesaDTO);
     }
 
     @DeleteMapping("/{id}")

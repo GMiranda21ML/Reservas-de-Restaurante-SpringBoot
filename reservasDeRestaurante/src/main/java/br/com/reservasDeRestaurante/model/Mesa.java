@@ -1,5 +1,6 @@
 package br.com.reservasDeRestaurante.model;
 
+import br.com.reservasDeRestaurante.dto.AtualizarMesaDTO;
 import br.com.reservasDeRestaurante.dto.CriarMesaDTO;
 import jakarta.persistence.*;
 
@@ -37,5 +38,19 @@ public class Mesa {
 
     public Status getStatus() {
         return status;
+    }
+
+    public void atualizarMesa(AtualizarMesaDTO atualizarMesaDTO) {
+        if (atualizarMesaDTO.nome() != null) {
+            this.nome = atualizarMesaDTO.nome();
+        }
+
+        if (atualizarMesaDTO.capacidade() != null) {
+            this.capacidade = atualizarMesaDTO.capacidade();
+        }
+
+        if (atualizarMesaDTO.status() != null) {
+            this.status = atualizarMesaDTO.status();
+        }
     }
 }

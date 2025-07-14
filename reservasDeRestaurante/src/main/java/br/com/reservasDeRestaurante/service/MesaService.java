@@ -1,5 +1,6 @@
 package br.com.reservasDeRestaurante.service;
 
+import br.com.reservasDeRestaurante.dto.AtualizarMesaDTO;
 import br.com.reservasDeRestaurante.dto.CriarMesaDTO;
 import br.com.reservasDeRestaurante.dto.DetalharMesaDTO;
 import br.com.reservasDeRestaurante.model.Mesa;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MesaService {
@@ -41,9 +43,23 @@ public class MesaService {
     }
 
     @Transactional
+    public ResponseEntity<DetalharMesaDTO> atualizarMesa(Long id, AtualizarMesaDTO atualizarMesaDTO) {
+        Optional<Mesa> mesa = mesaRepository.findById(id);
+
+        if (mesa.isPresent()) {
+            mesa.get().atualizarMesa(atualizarMesaDTO);
+            return ResponseEntity.ok(new DetalharMesaDTO(mesa.get()));
+        }
+
+        return null;
+
+    }
+
+    @Transactional
     public ResponseEntity<Void> deletarMesa(Long id) {
         mesaRepository.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
 }
