@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class MesaService {
@@ -18,6 +19,10 @@ public class MesaService {
 
     @Transactional
     public ResponseEntity<Void> criarMesa(CriarMesaDTO criarMesaDTO) {
+        if (mesaRepository.existsByNome(criarMesaDTO.nome())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe uma mesa com esse nome.");
+        }
+
         Mesa mesa = new Mesa(criarMesaDTO);
         mesaRepository.save(mesa);
 
