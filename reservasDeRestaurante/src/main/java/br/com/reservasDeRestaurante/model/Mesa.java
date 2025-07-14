@@ -1,5 +1,6 @@
 package br.com.reservasDeRestaurante.model;
 
+import br.com.reservasDeRestaurante.dto.CriarMesaDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,4 +14,28 @@ public class Mesa {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    public Mesa() {}
+
+    public Mesa(CriarMesaDTO criarMesaDTO) {
+        this.id = null;
+        this.nome = criarMesaDTO.nome();
+        this.capacidade = criarMesaDTO.capacidade();
+        this.status = criarMesaDTO.status();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Integer getCapacidade() {
+        return capacidade;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
 }

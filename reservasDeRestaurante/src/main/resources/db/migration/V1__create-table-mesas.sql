@@ -1,6 +1,6 @@
 CREATE TABLE mesas (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(255),
-    capacidade INTEGER,
+    id SERIAL PRIMARY KEY NOT NULL,
+    nome VARCHAR(255) NOT NULL UNIQUE,
+    capacidade INTEGER NOT NULL,
     status VARCHAR(50)
 );
