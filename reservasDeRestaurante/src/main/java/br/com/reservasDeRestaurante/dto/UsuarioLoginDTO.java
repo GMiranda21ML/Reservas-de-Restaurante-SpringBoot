@@ -2,7 +2,7 @@ package br.com.reservasDeRestaurante.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record UsuarioDTO(
+public record UsuarioLoginDTO(
         @NotBlank
         String nome,
         @NotBlank

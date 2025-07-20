@@ -1,9 +1,11 @@
 package br.com.reservasDeRestaurante.model;
 
+import br.com.reservasDeRestaurante.dto.UsuarioCadastroDTO;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,29 +25,37 @@ public class Usuario implements UserDetails {
 
     public Usuario() {}
 
+    public Usuario(UsuarioCadastroDTO dados, PasswordEncoder passwordEncoder) {
+        this.id = null;
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.senha = passwordEncoder.encode(dados.senha());
+        this.role = dados.role();
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
 
     public Role getRole() {
-        return role;
+        return this.role;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority(this.role.name()));
     }
 
     @Override
