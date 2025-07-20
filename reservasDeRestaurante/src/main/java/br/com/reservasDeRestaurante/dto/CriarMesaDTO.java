@@ -1,6 +1,6 @@
 package br.com.reservasDeRestaurante.dto;
 
-import br.com.reservasDeRestaurante.model.Status;
+import br.com.reservasDeRestaurante.model.enums.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

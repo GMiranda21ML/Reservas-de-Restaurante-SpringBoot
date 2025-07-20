@@ -1,7 +1,7 @@
 package br.com.reservasDeRestaurante.dto;
 
 import br.com.reservasDeRestaurante.model.Mesa;
-import br.com.reservasDeRestaurante.model.Status;
+import br.com.reservasDeRestaurante.model.enums.Status;
 
 public record DetalharMesaDTO(Long id,
                               String nome,

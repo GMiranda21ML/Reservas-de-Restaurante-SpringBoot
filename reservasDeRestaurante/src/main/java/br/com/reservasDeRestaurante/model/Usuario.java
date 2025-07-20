@@ -1,12 +1,14 @@
 package br.com.reservasDeRestaurante.model;
 
 import br.com.reservasDeRestaurante.dto.UsuarioCadastroDTO;
+import br.com.reservasDeRestaurante.model.enums.Role;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class Usuario implements UserDetails {
     private String senha;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<>();
 
     public Usuario() {}
 

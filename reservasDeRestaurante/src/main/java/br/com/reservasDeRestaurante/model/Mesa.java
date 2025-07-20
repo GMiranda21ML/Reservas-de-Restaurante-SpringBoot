@@ -2,7 +2,11 @@ package br.com.reservasDeRestaurante.model;
 
 import br.com.reservasDeRestaurante.dto.AtualizarMesaDTO;
 import br.com.reservasDeRestaurante.dto.CriarMesaDTO;
+import br.com.reservasDeRestaurante.model.enums.Status;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "mesas")
@@ -14,6 +18,8 @@ public class Mesa {
     private Integer capacidade;
     @Enumerated(EnumType.STRING)
     private Status status;
+    @OneToMany(mappedBy = "mesa", cascade = CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<>();
 
     public Mesa() {}
 

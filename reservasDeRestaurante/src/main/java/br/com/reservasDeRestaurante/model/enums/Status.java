@@ -1,4 +1,4 @@
-package br.com.reservasDeRestaurante.model;
+package br.com.reservasDeRestaurante.model.enums;
 
 public enum Status {
     DISPONIVEL,
