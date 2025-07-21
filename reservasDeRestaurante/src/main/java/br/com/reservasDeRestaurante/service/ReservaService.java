@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
@@ -92,6 +93,11 @@ public class ReservaService {
         LocalTime hora = criarReservaDTO.dataReserva().toLocalTime();
         if (hora.isBefore(LocalTime.of(10, 0)) || hora.isAfter(LocalTime.of(21, 0))) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Reservas só podem ser feitas entre 10h e 21h");
+        }
+
+        DayOfWeek diaDaSemana = criarReservaDTO.dataReserva().getDayOfWeek();
+        if (diaDaSemana == DayOfWeek.MONDAY || diaDaSemana == DayOfWeek.TUESDAY) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Reservas só podem ser feitas de quarta a domingo");
         }
 
         boolean mesaOcupada = reservaRepository.existsByMesaIdAndDataReservaAndStatusReserva(
