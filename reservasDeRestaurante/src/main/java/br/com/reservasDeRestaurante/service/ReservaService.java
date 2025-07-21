@@ -57,11 +57,16 @@ public class ReservaService {
     }
 
     @Transactional
-    public ResponseEntity<Void> cancelarReserva(Long id) {
+    public ResponseEntity<Void> cancelarReserva(Long id, Usuario usuario) {
         Optional<Reserva> reserva = reservaRepository.findById(id);
 
         if (reserva.isPresent()) {
             Reserva reservaPresente = reserva.get();
+
+            if (!reservaPresente.getUsuario().getId().equals(usuario.getId())) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
             reservaPresente.cancelarReserva();
             reservaPresente.getMesa().disponibilizarMesa();
         } else {

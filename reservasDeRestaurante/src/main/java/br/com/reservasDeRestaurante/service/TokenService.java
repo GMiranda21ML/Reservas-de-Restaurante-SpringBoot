@@ -51,17 +51,6 @@ public class TokenService {
         }
     }
 
-//    public Long getIdDoUsuario(String tokenJwt) {
-//        Claims claims = Jwts.parserBuilder()
-//                .setSigningKey(chaveSecreta)
-//                .build()
-//                .parseClaimsJws(tokenJwt)
-//                .getBody();
-//
-//        return Long.parseLong(claims.getSubject());
-//    }
-
-
 
 }
 

@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,7 @@ public class MesaController {
     private MesaService mesaService;
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> criarMesa(@RequestBody @Valid CriarMesaDTO criarMesaDTO) {
         return mesaService.criarMesa(criarMesaDTO);
     }
@@ -36,11 +38,13 @@ public class MesaController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<DetalharMesaDTO> atualizarMesa(@PathVariable Long id, @RequestBody AtualizarMesaDTO atualizarMesaDTO) {
         return mesaService.atualizarMesa(id, atualizarMesaDTO);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deletarMesa(@PathVariable Long id) {
         return mesaService.deletarMesa(id);
     }

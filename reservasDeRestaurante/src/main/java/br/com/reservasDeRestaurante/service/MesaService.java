@@ -33,7 +33,7 @@ public class MesaService {
     }
 
     public ResponseEntity<List<DetalharMesaDTO>> listarMesas() {
-        List<Mesa> mesas = mesaRepository.findAll();
+        List<Mesa> mesas = mesaRepository.findAllByOrderById();
 
         List<DetalharMesaDTO> lista = mesas.stream()
                 .map(DetalharMesaDTO::new)

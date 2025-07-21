@@ -30,7 +30,7 @@ public class ReservaController {
     }
 
     @PutMapping("/{id}/cancelar")
-    public ResponseEntity<Void> cancelarReserva(@PathVariable Long id) {
-        return reservaService.cancelarReserva(id);
+    public ResponseEntity<Void> cancelarReserva(@PathVariable Long id, @AuthenticationPrincipal Usuario usuario) {
+        return reservaService.cancelarReserva(id, usuario);
     }
 }
