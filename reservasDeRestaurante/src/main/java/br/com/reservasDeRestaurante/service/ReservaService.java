@@ -1,6 +1,7 @@
 package br.com.reservasDeRestaurante.service;
 
 import br.com.reservasDeRestaurante.dto.CriarReservaDTO;
+import br.com.reservasDeRestaurante.dto.ListarReservaDTO;
 import br.com.reservasDeRestaurante.model.Mesa;
 import br.com.reservasDeRestaurante.model.Reserva;
 import br.com.reservasDeRestaurante.model.Usuario;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Service
 public class ReservaService {
@@ -35,6 +37,21 @@ public class ReservaService {
         reservaRepository.save(reserva);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
+
+    }
+
+    public ResponseEntity<List<ListarReservaDTO>> listarReserva(Usuario usuario) {
+        List<Reserva> reservas = reservaRepository.findAllByUsuarioId(usuario.getId());
+
+        if (reservas.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Você ainda não possui reservas");
+        }
+
+        List<ListarReservaDTO> reservasDto = reservas.stream()
+                .map(ListarReservaDTO::new)
+                .toList();
+
+        return ResponseEntity.ok().body(reservasDto);
 
     }
 
