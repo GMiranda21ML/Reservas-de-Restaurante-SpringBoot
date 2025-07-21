@@ -42,8 +42,8 @@ public class UsuarioService {
     @Transactional
     public ResponseEntity<Void> efetuarCadastro(UsuarioCadastroDTO dados) {
 
-        if (usuarioRepository.existsByEmail(dados.nome())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe uma mesa com esse nome.");
+        if (usuarioRepository.existsByEmail(dados.email())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe um usuário com esse email.");
         }
 
         Usuario usuario = new Usuario(dados, passwordEncoder);
