@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservaService {
@@ -44,7 +45,7 @@ public class ReservaService {
         List<Reserva> reservas = reservaRepository.findAllByUsuarioId(usuario.getId());
 
         if (reservas.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Você ainda não possui reservas");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Você ainda não possui reservas");
         }
 
         List<ListarReservaDTO> reservasDto = reservas.stream()
@@ -53,6 +54,21 @@ public class ReservaService {
 
         return ResponseEntity.ok().body(reservasDto);
 
+    }
+
+    @Transactional
+    public ResponseEntity<Void> cancelarReserva(Long id) {
+        Optional<Reserva> reserva = reservaRepository.findById(id);
+
+        if (reserva.isPresent()) {
+            Reserva reservaPresente = reserva.get();
+            reservaPresente.cancelarReserva();
+            reservaPresente.getMesa().disponibilizarMesa();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi encontrado uma reserva com este id");
+        }
+
+        return ResponseEntity.noContent().build();
     }
 
     private Mesa validacoesDeReserva(CriarReservaDTO criarReservaDTO) {
@@ -85,5 +101,6 @@ public class ReservaService {
 
         return mesa;
     }
+
 
 }

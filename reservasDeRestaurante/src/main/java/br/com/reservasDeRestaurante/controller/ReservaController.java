@@ -28,4 +28,9 @@ public class ReservaController {
     public ResponseEntity<List<ListarReservaDTO>> listarReservas(@AuthenticationPrincipal Usuario usuario) {
         return reservaService.listarReserva(usuario);
     }
+
+    @PutMapping("/{id}/cancelar")
+    public ResponseEntity<Void> cancelarReserva(@PathVariable Long id) {
+        return reservaService.cancelarReserva(id);
+    }
 }

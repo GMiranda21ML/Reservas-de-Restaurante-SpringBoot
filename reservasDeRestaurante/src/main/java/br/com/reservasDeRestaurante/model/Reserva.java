@@ -49,4 +49,8 @@ public class Reserva {
     public StatusReserva getStatusReserva() {
         return this.statusReserva;
     }
+
+    public void cancelarReserva() {
+        this.statusReserva = StatusReserva.CANCELADO;
+    }
 }

@@ -51,7 +51,7 @@ public class MesaService {
             return ResponseEntity.ok(new DetalharMesaDTO(mesa.get()));
         }
 
-        return null;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi encontrado uma mesa com este id");
 
     }
 
