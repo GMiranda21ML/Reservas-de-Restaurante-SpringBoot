@@ -90,8 +90,8 @@ public class ReservaService {
         }
 
         LocalTime hora = criarReservaDTO.dataReserva().toLocalTime();
-        if (hora.isBefore(LocalTime.of(10, 0)) || hora.isAfter(LocalTime.of(22, 0))) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Reservas só podem ser feitas entre 10h e 22h");
+        if (hora.isBefore(LocalTime.of(10, 0)) || hora.isAfter(LocalTime.of(21, 0))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Reservas só podem ser feitas entre 10h e 21h");
         }
 
         boolean mesaOcupada = reservaRepository.existsByMesaIdAndDataReservaAndStatusReserva(
