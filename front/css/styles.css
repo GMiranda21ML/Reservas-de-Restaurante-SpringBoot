@@ -53,8 +53,23 @@ body {
     color: #fff;
     text-decoration: none;
     font-weight: 400;
-    transition: color 0.3s ease;
+    transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
     position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2.5px;
+    background-color: #d4af37;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    border-radius: 2px;
 }
 
 .nav-link:hover,
@@ -62,20 +77,9 @@ body {
     color: #d4af37;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #d4af37;
-    transition: width 0.3s ease;
-}
-
 .nav-link:hover::after,
 .nav-link.active::after {
-    width: 100%;
+    transform: scaleX(1);
 }
 
 /* Hero Section */
@@ -451,4 +455,47 @@ section h2 {
         padding: 1.5rem 0.7rem 1.2rem 0.7rem;
         max-width: 98vw;
     }
+} 
+
+/* Mesas Section */
+.mesas-section {
+    background: #f9f9f9;
+    min-height: 80vh;
+    padding-top: 6rem;
+}
+
+.mesas-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.mesa-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid #d4af37;
+    position: relative;
+}
+
+.mesa-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+}
+
+.mesa-card h3 {
+    color: #d4af37;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+}
+
+.mesa-card p {
+    font-size: 1.08rem;
+    color: #444;
+    line-height: 1.7;
 } 

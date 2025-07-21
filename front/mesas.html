@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Bistrô Encantado</title>
+    <title>Mesas - Bistrô Encantado</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -16,31 +16,23 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="mesas.html" class="nav-link">Mesas</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
                 </ul>
             </div>
         </nav>
     </header>
     <main>
-        <section class="login-section">
+        <section class="mesas-section">
             <div class="container">
-                <div class="form-card">
-                    <h2>Login</h2>
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="login-email">E-mail</label>
-                            <input type="email" id="login-email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="login-password">Senha</label>
-                            <input type="password" id="login-password" name="password" required>
-                        </div>
-                        <button type="submit" class="btn-primary">Entrar</button>
-                    </form>
-                    <p class="form-switch">Não tem uma conta? <a href="register.html">Cadastre-se</a></p>
+                <h2>Mesas do Restaurante</h2>
+                <div id="mesas-list" class="mesas-list">
+                    <!-- Mesas serão carregadas aqui via JS -->
                 </div>
             </div>
         </section>
     </main>
     <script src="./js/login.js"></script>
+    <script src="./js/mesas.js"></script>
 </body>
 </html> 
