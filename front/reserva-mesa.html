@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesas - Bistrô Encantado</title>
+    <title>Reservar Mesa - Bistrô Encantado</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -27,16 +27,30 @@
         </nav>
     </header>
     <main>
-        <section class="mesas-section">
+        <section class="register-section">
             <div class="container">
-                <h2>Mesas do Restaurante</h2>
-                <div id="mesas-list" class="mesas-list">
-                    <!-- Mesas serão carregadas aqui via JS -->
+                <div class="form-card">
+                    <h2>Reservar Mesa</h2>
+                    <form id="reservaMesaForm">
+                        <div class="form-group">
+                            <label for="reserva-mesa-id">ID da Mesa</label>
+                            <input type="number" id="reserva-mesa-id" name="mesaId" min="1" required placeholder="Ex: 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="reserva-data">Data e Hora da Reserva</label>
+                            <input type="datetime-local" id="reserva-data" name="dataReserva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reserva-numero-pessoas">Número de Pessoas</label>
+                            <input type="number" id="reserva-numero-pessoas" name="numeroPessoas" min="1" required placeholder="Ex: 4">
+                        </div>
+                        <button type="submit" class="btn-primary">Reservar</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
     <script src="./js/login.js"></script>
-    <script src="./js/mesas.js"></script>
+    <script src="./js/reserva-mesa.js"></script>
 </body>
 </html> 
