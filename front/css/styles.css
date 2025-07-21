@@ -472,30 +472,67 @@ section h2 {
 }
 
 .mesa-card {
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-    padding: 2rem 1.5rem;
+    background: linear-gradient(135deg, #fffbe6 60%, #f9f9f9 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    padding: 2.2rem 1.5rem 1.5rem 1.5rem;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border-top: 4px solid #d4af37;
+    transition: transform 0.3s, box-shadow 0.3s, border-left 0.3s, box-shadow 0.4s;
+    border-left: 7px solid #d4af37;
     position: relative;
+    overflow: hidden;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mesa-card[data-status="DISPONIVEL"] {
+    border-left: 7px solid #d4af37;
+}
+.mesa-card[data-status]:not([data-status="DISPONIVEL"]) {
+    border-left: 7px solid #e74c3c;
 }
 
 .mesa-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 48px 0 rgba(212,175,55,0.13), 0 2px 8px rgba(0,0,0,0.10);
+    filter: brightness(1.04);
+}
+
+.mesa-card .mesa-icon {
+    font-size: 2.7rem;
+    margin-bottom: 0.7rem;
+    color: #d4af37;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(212,175,55,0.10));
+}
+
+.mesa-card[data-status="DISPONIVEL"] .mesa-icon {
+    color: #d4af37;
+}
+.mesa-card[data-status]:not([data-status="DISPONIVEL"]) .mesa-icon {
+    color: #e74c3c;
 }
 
 .mesa-card h3 {
-    color: #d4af37;
+    color: #222;
     font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    margin-bottom: 0.7rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    display: inline-block;
+    box-shadow: none;
 }
 
 .mesa-card p {
     font-size: 1.08rem;
     color: #444;
     line-height: 1.7;
+    margin-bottom: 0.2rem;
 } 

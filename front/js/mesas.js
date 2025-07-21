@@ -1,7 +1,5 @@
-// Proteger a página
 requireAuth();
 
-// Função para renderizar mesas
 function renderMesas(mesas) {
     const container = document.getElementById('mesas-list');
     container.innerHTML = '';
@@ -12,7 +10,9 @@ function renderMesas(mesas) {
     mesas.forEach(mesa => {
         const card = document.createElement('div');
         card.className = 'mesa-card';
+        card.setAttribute('data-status', mesa.status);
         card.innerHTML = `
+            <span class="mesa-icon">🍽️</span>
             <h3>${mesa.nome}</h3>
             <p>Capacidade: ${mesa.capacidade} pessoas</p>
             <p>Status: ${mesa.status === 'DISPONIVEL' ? 'Disponível' : 'Ocupada'}</p>
@@ -21,7 +21,6 @@ function renderMesas(mesas) {
     });
 }
 
-// Buscar mesas da API (ajuste a URL conforme sua API)
 async function carregarMesas() {
     try {
         const response = await authFetch('http://localhost:8080/mesas');
@@ -33,7 +32,6 @@ async function carregarMesas() {
             renderMesas([]);
         }
     } catch (e) {
-        // Se a API não estiver pronta, usar mock
         renderMesas([
             { nome: 'Mesa 1', capacidade: 4, status: 'DISPONIVEL' },
             { nome: 'Mesa 2', capacidade: 4, status: 'DISPONIVEL' },
