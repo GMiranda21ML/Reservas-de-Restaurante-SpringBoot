@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Bistrô Encantado</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>Bistrô Encantado</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="login.html" class="nav-link active">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="register-section">
+            <div class="container">
+                <div class="form-card">
+                    <h2>Cadastro</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="register-name">Nome</label>
+                            <input type="text" id="register-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">E-mail</label>
+                            <input type="email" id="register-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Senha</label>
+                            <input type="password" id="register-password" name="password" required>
+                        </div>
+                        <div class="form-group form-checkbox">
+                            <input type="checkbox" id="register-admin" name="admin">
+                            <label for="register-admin">Cadastrar como administrador</label>
+                        </div>
+                        <button type="submit" class="btn-primary">Cadastrar</button>
+                    </form>
+                    <p class="form-switch">Já tem uma conta? <a href="login.html">Entrar</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

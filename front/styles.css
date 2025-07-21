@@ -291,6 +291,104 @@ section h2 {
     font-size: 1rem;
 }
 
+/* Formulários de Login e Cadastro */
+.form-card {
+    background: #fff;
+    max-width: 400px;
+    margin: 5rem auto 0 auto;
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    text-align: center;
+    position: relative;
+}
+
+.form-card h2 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fafafa;
+    transition: border 0.2s;
+}
+
+.form-group input:focus {
+    border: 1.5px solid #d4af37;
+    outline: none;
+    background: #fff;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-checkbox label {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+.btn-primary {
+    background: #d4af37;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+}
+
+.btn-primary:hover {
+    background: #bfa134;
+    transform: translateY(-2px) scale(1.03);
+}
+
+.form-switch {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+.form-switch a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.form-switch a:hover {
+    color: #bfa134;
+    text-decoration: underline;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .nav-container {
@@ -345,5 +443,12 @@ section h2 {
     .nav-menu {
         flex-direction: column;
         gap: 0.5rem;
+    }
+} 
+
+@media (max-width: 600px) {
+    .form-card {
+        padding: 1.5rem 0.7rem 1.2rem 0.7rem;
+        max-width: 98vw;
     }
 } 
