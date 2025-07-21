@@ -59,4 +59,13 @@ public class Mesa {
             this.status = atualizarMesaDTO.status();
         }
     }
+
+    public void reservarMesa() {
+        this.status = Status.RESERVADA;
+    }
+
+    public void disponibilizarMesa() {
+        this.status = Status.DISPONIVEL;
+    }
+
 }

@@ -1,5 +1,6 @@
 package br.com.reservasDeRestaurante.model;
 
+import br.com.reservasDeRestaurante.dto.CriarReservaDTO;
 import br.com.reservasDeRestaurante.model.enums.StatusReserva;
 import jakarta.persistence.*;
 
@@ -20,6 +21,14 @@ public class Reserva {
     private StatusReserva statusReserva;
 
     public Reserva() {}
+
+    public Reserva(LocalDateTime dataReserva, Mesa mesa, Usuario usuario) {
+        this.id = null;
+        this.usuario = usuario;
+        this.mesa = mesa;
+        this.dataReserva = dataReserva;
+        this.statusReserva = StatusReserva.ATIVO;
+    }
 
     public Long getId() {
         return this.id;

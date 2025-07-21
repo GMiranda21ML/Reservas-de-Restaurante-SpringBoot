@@ -19,13 +19,13 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping("/login")
-    public ResponseEntity<TokenJwtDTO> efetuarLogin(@RequestBody @Valid UsuarioLoginDTO dados) {
-        return usuarioService.efetuarLogin(dados);
+    public ResponseEntity<TokenJwtDTO> efetuarLogin(@RequestBody @Valid UsuarioLoginDTO usuarioLoginDTO) {
+        return usuarioService.efetuarLogin(usuarioLoginDTO);
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<Void> efetuarCadastro(@RequestBody @Valid UsuarioCadastroDTO dados) {
-        return usuarioService.efetuarCadastro(dados);
+    public ResponseEntity<Void> efetuarCadastro(@RequestBody @Valid UsuarioCadastroDTO usuarioCadastroDTO) {
+        return usuarioService.efetuarCadastro(usuarioCadastroDTO);
     }
 
 }

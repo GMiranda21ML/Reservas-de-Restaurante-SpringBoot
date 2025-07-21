@@ -4,6 +4,7 @@ import br.com.reservasDeRestaurante.dto.AtualizarMesaDTO;
 import br.com.reservasDeRestaurante.dto.CriarMesaDTO;
 import br.com.reservasDeRestaurante.dto.DetalharMesaDTO;
 import br.com.reservasDeRestaurante.model.Mesa;
+import br.com.reservasDeRestaurante.model.Usuario;
 import br.com.reservasDeRestaurante.repository.MesaRepository;
 import br.com.reservasDeRestaurante.service.MesaService;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
