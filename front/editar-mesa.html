@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Mesa - Bistrô Encantado</title>
+    <title>Editar Mesa - Bistrô Encantado</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -18,6 +18,7 @@
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="mesas.html" class="nav-link">Mesas</a></li>
                     <li><a href="criar-mesa.html" class="nav-link">Cadastrar Mesa</a></li>
+                    <li><a href="editar-mesa.html" class="nav-link active">Editar Mesa</a></li>
                     <li><a href="login.html" class="nav-link">Login</a></li>
                 </ul>
             </div>
@@ -27,38 +28,43 @@
         <section class="register-section">
             <div class="container">
                 <div class="form-card">
-                    <h2 id="crud-title">Criar Nova Mesa</h2>
-                    <form id="criarMesaForm">
+                    <h2>Editar Mesa</h2>
+                    <div id="mesas-list" class="mesas-list" style="margin-bottom:2rem;"></div>
+                    <form id="buscarMesaForm" style="margin-bottom: 2rem;">
                         <div class="form-group">
-                            <label for="mesa-nome">Nome da Mesa</label>
-                            <input type="text" id="mesa-nome" name="nome" required>
+                            <label for="buscar-id">ID da Mesa</label>
+                            <input type="number" id="buscar-id" name="buscar-id" min="1" required placeholder="Digite o ID da mesa">
+                        </div>
+                        <button type="submit" class="btn-primary">Buscar Mesa</button>
+                    </form>
+                    <form id="editarMesaForm" style="display:none;">
+                        <div class="form-group">
+                            <label for="edit-nome">Nome da Mesa</label>
+                            <input type="text" id="edit-nome" name="nome" placeholder="Nome da mesa">
                         </div>
                         <div class="form-group">
-                            <label for="mesa-capacidade">Capacidade <span style="font-size:0.9em;color:#888;">(número de pessoas)</span></label>
-                            <div style="display:flex;align-items:center;gap:8px;">
-                                <span style="font-size:1.2em;">👥</span>
-                                <input type="number" id="mesa-capacidade" name="capacidade" min="1" required placeholder="Ex: 8" style="width:100px;padding:6px 10px;border-radius:6px;border:1px solid #ccc;">
+                            <label for="edit-capacidade">Capacidade <span style="font-size:0.9em;color:#888;">(número de pessoas)</span></label>
+                            <div class="input-icon-group">
+                                <span class="input-icon">👥</span>
+                                <input type="number" id="edit-capacidade" name="capacidade" min="1" placeholder="Ex: 8" class="input-elegante">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="mesa-status">Status</label>
-                            <select id="mesa-status" name="status" required>
+                            <label for="edit-status">Status</label>
+                            <select id="edit-status" name="status">
+                                <option value="">-- Selecione --</option>
                                 <option value="DISPONIVEL">Disponível</option>
                                 <option value="RESERVADA">Reservada</option>
                                 <option value="OCUPADA">Ocupada</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn-primary" id="submit-btn">Criar Mesa</button>
+                        <button type="submit" class="btn-primary">Salvar Alterações</button>
                     </form>
-                </div>
-                <div class="mesas-list-card">
-                    <h2>Mesas Existentes</h2>
-                    <div id="mesas-list" class="mesas-list"></div>
                 </div>
             </div>
         </section>
     </main>
     <script src="./js/login.js"></script>
-    <script src="./js/criar-mesa.js"></script>
+    <script src="./js/editar-mesa.js"></script>
 </body>
 </html> 

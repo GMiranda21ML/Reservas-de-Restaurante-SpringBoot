@@ -48,4 +48,11 @@ public class MesaController {
     public ResponseEntity<Void> deletarMesa(@PathVariable Long id) {
         return mesaService.deletarMesa(id);
     }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<DetalharMesaDTO> buscarMesaPorId(@PathVariable Long id) {
+        return mesaService.buscarMesaPorId(id);
+    }
+
 }

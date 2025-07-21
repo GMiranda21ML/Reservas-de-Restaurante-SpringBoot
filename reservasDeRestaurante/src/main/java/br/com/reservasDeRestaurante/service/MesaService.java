@@ -62,4 +62,13 @@ public class MesaService {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    public ResponseEntity<DetalharMesaDTO> buscarMesaPorId(Long id) {
+        Optional<Mesa> mesaOptional = mesaRepository.findById(id);
+        if (mesaOptional.isPresent()) {
+            return ResponseEntity.ok(new DetalharMesaDTO(mesaOptional.get()));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
